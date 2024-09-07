@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fate Dice Roller</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Fate Dice Roller</h1>
+    
+    <div>
+        <p></p><label for="skill">Skill:</label>
+        <input type="range" id="skill" min="-2" max="10" value="0" class="slider">
+        <span id="skillValue">0</span></p>
+
+        <p></p><label for="difficulty">Difficulty:</label>
+        <input type="range" id="difficulty" min="-2" max="10" value="0" class="slider">
+        <span id="difficultyValue">0</span></p>
+    </div>
+
+    <div>
+        <p>Probability of Succeed with Style: <span id="probabilitySucceedWithStyle">0%</span></p>
+        <p>Probability of Succeed: <span id="probabilitySucceed">0%</span></p>
+        <p>Probability of Tie: <span id="probabilityTie">0%</span></p>
+        <p>Probability of Fail: <span id="probabilityFail">0%</span></p>
+    </div>
+
+    <div class="button-container">
+        <button id="overcomeBtn">Overcome</button>
+        <button id="createAdvantageBtn">Create an Advantage</button>
+        <button id="attackBtn">Attack</button>
+        <button id="defendBtn">Defend</button>
+    </div>
+
+    <div id="diceResults" class="dice-container">
+        <div class="dice" id="die1"></div>
+        <div class="dice" id="die2"></div>
+        <div class="dice" id="die3"></div>
+        <div class="dice" id="die4"></div>
+    </div>
+
+    <div id="specific_outcome_container" class="resultContainer">
+        <p>You got a <span id="ladderResult">Mediocre</span> (<span id="finalResult">0</span>) result! And you <span id="outcome">N/A</span>!</p>
+        <p><span id="specificOutcome">N/A</span></p>
+    </div>
+
+    <div>
+        <p>Shifts: <span id="shifts">0</span></p>
+        <p>Dice Sum: <span id="diceSum">0</span></p>
+        <p>Preliminary Result: <span id="preliminaryResult">0</span></p>
+        <p>Secondary Result: <span id="secondaryResult">0</span></p>
+        <p>Effort: <span id="effort">0</span></p>
+        <p>Outcome: <span id="outcome">N/A</span></p>
+        <p>Action Outcome: <span id="specificOutcome">N/A</span></p>
+    </div>
+
+    <div class="button-container">
+        <button id="fateInvokeBtn">Fate Invoke +2</button>
+        <button id="freeInvokeBtn">Free Invoke +2</button>
+        <button id="fateRerollBtn">Fate Reroll</button>
+        <button id="freeRerollBtn">Free Reroll</button>
+    </div>
+
+    <div>
+        <p>Probability of better roll: <span id="rerollProbability">0%</span></p>
+        <p>Fate point spent: <span id="totalFatePoint">0</span></p>
+        <p>Total number of invokes: <span id="totalInvoke">0</span></p>
+        <p>Total invoke bonus: <span id="totalBonus">0</span></p>
+        <p>Total free invokes spent: <span id="freeInvoke">N/A</span></p>
+        <button id="resetBtn">Reset</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
