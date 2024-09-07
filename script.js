@@ -25,6 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let totalBonus = 0;
     let diceRolls = [0, 0, 0, 0]; // Initialize dice rolls array with zeros
     let diceSum = diceRolls.reduce((a, b) => a + b, 0);
+    let currentAction = "placeholder";
+    //console.log(currentAction);
+    let finalOutcome = "placeholder";
+    //console.log(finalOutcome);
+
 
     const probabilities = {
         '-4': 1.23,
@@ -76,10 +81,17 @@ document.addEventListener('DOMContentLoaded', () => {
             succeedwithstyle: "If you succeed with style, you don't take a hit, you deny the enemy's action, and you even get a boost as you gain the upper hand for a moment.",
             failure: "If you fail against an attack, you take a hit, which you must absorb with stress or consequences. Regardless, the enemy succeeds as described for their action.",
         },
+        placeholder: {
+            tie: "Placeholder Tie.",
+            succeed: "Placeholder Success!",
+            succeedwithstyle: "Placeholder Succeed with style!",
+            failure: "Placeholder Failure - still sucks!",
+        },
     };
 
 
     function updateValues() {
+        //console.log("Now we are running the update!")
         const skill = parseInt(skillSlider.value);
         const difficulty = parseInt(difficultySlider.value);
 
@@ -99,12 +111,15 @@ document.addEventListener('DOMContentLoaded', () => {
         finalResultElem.textContent = finalResult;
 
         const outcome = calculateOutcome(finalResult);
+        finalOutcome = calculateOutcome(finalResult);
+        //console.log("Value of outcome in updateValue: "+ outcome)
+        //console.log("Value of finalOutcome in updateValue: "+ finalOutcome)
         outcomeElem.textContent = outcome;
 
         const ladderResult = getLadderResult(finalResult);
         document.getElementById('ladderResult').textContent = ladderResult;
         document.getElementById('effort').textContent = finalResult;
-
+        updateActionOutcome(currentAction) //calls to compare and update the outcome
         // Calculate shifts
         const shifts = finalResult - difficulty;
         document.getElementById('shifts').textContent = shifts;
@@ -130,6 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function rollDice() {
+        //console.log("rollDice executed")
         diceRolls = Array.from({ length: 4 }, () => Math.floor(Math.random() * 3) - 1);
         diceSum = diceRolls.reduce((a, b) => a + b, 0); // Recalculate diceSum after rolling
         updateValues(); // Update values based on new dice roll
@@ -153,25 +169,19 @@ document.addEventListener('DOMContentLoaded', () => {
         return 'Failure';
     }
     function handleAction(action) {
-        action = action
-        rollDice();
-        const skill = parseInt(skillSlider.value);
-        const difficulty = parseInt(difficultySlider.value);
+        //console.log("Handle Action executed")
+        currentAction = action
+        //console.log("Set currentAction to: " + currentAction)
+        updateActionOutcome(currentAction)
+    }
 
-        // Update dice results
-        const preliminaryResult = skill;
-        const secondaryResult = preliminaryResult + diceSum;
-        const finalResult = preliminaryResult + diceSum + totalBonus;
-        
-        // Determine the outcome
-        const outcome = calculateOutcome(finalResult);
-        const specificOutcome = actionOutcomes[action][outcome.toLowerCase().replace(/ /g, '')];
-
-        // Update the display
-        updateValues(); // Make sure this updates all relevant fields
-
-        // Display the action-specific outcome
+    function updateActionOutcome(currentAction){
+        const outcome = finalOutcome;
+        const specificOutcome = actionOutcomes[currentAction][outcome.toLowerCase().replace(/ /g, '')];
+        //console.log(specificOutcome)
+        //Update the display
         document.getElementById('specificOutcome').textContent = specificOutcome;
+        //console.log("Now it is displayed")
     }
 
     function calculateProbabilities(skill, difficulty) {
@@ -256,11 +266,19 @@ document.addEventListener('DOMContentLoaded', () => {
     //    updateValues(action); // Pass the action type here
     //}
 
+    //document.getElementById('overcomeBtn').addEventListener('click', () => handleAction('overcome'));
+    //document.getElementById('createAdvantageBtn').addEventListener('click', () => handleAction('createAdvantage'));
+    //document.getElementById('attackBtn').addEventListener('click', () => handleAction('attack'));
+    //document.getElementById('defendBtn').addEventListener('click', () => handleAction('defend'));
+    document.getElementById('overcomeBtn').addEventListener('click', () => rollDice());
     document.getElementById('overcomeBtn').addEventListener('click', () => handleAction('overcome'));
+    document.getElementById('createAdvantageBtn').addEventListener('click', () => rollDice());
     document.getElementById('createAdvantageBtn').addEventListener('click', () => handleAction('createAdvantage'));
+    document.getElementById('attackBtn').addEventListener('click', () => rollDice());
     document.getElementById('attackBtn').addEventListener('click', () => handleAction('attack'));
+    document.getElementById('defendBtn').addEventListener('click', () => rollDice());
     document.getElementById('defendBtn').addEventListener('click', () => handleAction('defend'));
-
+    
 
     document.getElementById('fateInvokeBtn').addEventListener('click', () => applyBonus('fateInvoke'));
     document.getElementById('freeInvokeBtn').addEventListener('click', () => applyBonus('freeInvoke'));
