@@ -58,34 +58,34 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     const actionOutcomes = {
         overcome: {
-            tie: "You tie, it's success at a minor cost—you're in a tough spot, the enemy gets a boost, or you may take a hit. Alternatively, you fail but gain a boost.",
-            succeed: "You succeed, you meet your goal and the story moves on without hiccups",
-            succeedwithstyle: "You succeed with style, it's a success and you also get a boost.",
-            failure: "You fail, discuss with the GM (and the defending player, if any) whether it's a failure or success at a major cost.",
+            tie: "<p>When you tie on a <strong>Overcome Action</strong>, it's success at a minor cost — you're in a tough spot, the enemy gets a boost, or you may take a hit. Alternatively, you fail but gain a boost.</p> <p>Your options are: <ul><li><strong>Succeed</strong>, but the enemy gets a <strong>boost!</strong></li><li><strong>Succeed</strong>, but you take a <strong>hit!</strong></li><li><strong>Failure</strong>, but you get a <strong>boost</strong></li></ul>",
+            succeed: "<p>When you succeed on a <strong>Overcome Action</strong>, you meet your goal and the story moves on without hiccups</p>",
+            succeedwithstyle: "<p>When you succeed with style on a <strong>Overcome Action</strong>, it's a success and you also get a boost.</p>",
+            fail: "<p>When you fail on a <strong>Overcome Action</strong>, discuss with the GM (and the defending player, if any) whether it's a failure or success at a major cost.</p><p>Your options are: <ul><li><strong>Failure</strong>, and nothing else</li><li><strong>Success at a major cost</strong>, which should be pretty bad!</li></ul></p>",
         },
         createAdvantage: {
-            tie: "You tie, you don't create an aspect, but you do get a boost. Existing aspect: If you tie, you gain a boost if the aspect was unknown; it stays unknown. If the aspect is known, you get a free invoke on it instead.",
-            succeed: "You succeed, you create a situation aspect with one free invoke on it. Existing aspect: If you succeed, gain a free invoke on the aspect, revealing it if unknown.",
-            succeedwithstyle: "You succeed with style, you create a situation aspect with two free invokes on it. Existing aspect: If you succeed with style, gain two free invokes, revealing it if unknown.",
-            failure: "You fail, you either don't create the aspect (failure) or you create it but the enemy gets the free invoke (success at a cost). If you succeed at a cost, the final aspect may need to be rewritten to benefit the enemy. This may still be worth it because aspects are true. Existing aspect: If you fail, and the aspect was known, the enemy gets a free invoke. If it was unknown, they may choose to reveal it to get a free invoke.",
+            tie: "<p>When you tie while trying to <i>create</i> an aspect on a <strong>Create an Advantage</strong> — you don't create an aspect, but you do get a boost.</p><p> When you tie while trying to <i>discover</i> an unknown aspect on a <strong>Create an Advantage Action</strong> the aspect stay unknown but you still get a boost.</p><p>When you are trying to <i>leverage</i> existing known aspect on a <strong>Create an Advantage Action</strong> and you tie, you get a free invoke on it instead.</p>",
+            succeed: "<p>When you succeed while trying to <i>create</i> an aspect on a <strong>Create an Advantage</strong> — you create the situational aspect and you get a free invoke on it.</p><p> When you succeed while trying to <i>discover</i> an unknown aspect on a <strong>Create an Advantage Action</strong> the aspect is revealed and you get a free invoke on it.</p><p>When you are trying to <i>leverage</i> existing known aspect on a <strong>Create an Advantage Action</strong> and you succeed and you get a free invoke on it.</p>",
+            succeedwithstyle: "<p>When you succeed with style while trying to <i>create</i> an aspect on a <strong>Create an Advantage</strong> — you create the situational aspect and you get two free invokes on it.</p><p> When you succeed while trying to <i>discover</i> an unknown aspect on a <strong>Create an Advantage Action</strong> the aspect is revealed and you get two free invokes on it.</p><p>When you are trying to <i>leverage</i> existing known aspect on a <strong>Create an Advantage Action</strong> and you succeed and you get two free invokes on it.</p>",
+            fail: "<p>When you fail while trying to <i>create</i> an aspect on a <strong>Create an Advantage</strong> — you either don't create the situational aspect or you create it but an enemy get a free invoke on it.</p><p> When you fail while trying to <i>discover</i> an unknown aspect on a <strong>Create an Advantage Action</strong> the aspect the enemy may reveal it to get a free invoke on it.</p><p>When you are trying to <i>leverage</i> existing known aspect on a <strong>Create an Advantage Action</strong> and you fail and the enemy get a free invoke on it.</p>",
         },
         attack: {
-            tie: "If you tie, maybe you barely connect, maybe you cause the defender to flinch. Either way, you get a boost.",
-            succeed: "If you succeed, you deal a hit equal to the difference between your attack's total and the defense's effort. The defender must absorb this hit with stress or consequences, or else be taken out.",
-            succeedwithstyle: "If you succeed with style, you deal a hit just like a success, but you may reduce the shifts of the hit by one to get a boost.",
-            failure: "If you fail, you fail to connect—the attack is parried, dodged, or maybe just absorbed by armor.",
+            tie: "<p>When you tie on a <strong>Attack Action</strong> — maybe you barely connect, maybe you cause the defender to flinch, or get a cut in the face that will momentarily distract them. Either way, you get a <strong>boost!</strong>. If you are using Weapon Extras that deals additional stress you generally still add that on a tie - and you still get the <strong>boost!</strong><p>",
+            succeed: "<p>When you succeed on a <strong>Attack Action</strong> — you deal a hit equal to the difference between your attack's total <i>effort</i> and the defense's <i>effort</i>. The defender must absorb this hit with stress or consequences, or else be <strong>taken out</strong>. If you are using Armor Extras that reduce stress taken, and that would reduce it to zero - it is suggested that you <strong>boost!</strong></p><p>A note on scaling and Nameless NPS - a single success with a Weapon Extra with 2 added stress takes out 3 Average Nameless NPC or 1 Fair Filler NPC.</p>",
+            succeedwithstyle: "<p>When you succeed with style on a <strong>Attack Action</strong>, you deal a hit just like a success! <strong>And you may</strong> reduce the shifts of the hit by one to get a <strong>boost</strong>!</p><p>Reducing the shift by one now and getting +2 later is often a good idea, because of the bellcurve of 4dF.</p><p>There are two suggested stunts in Fate Core that give you the option to upgrade the boost to an Aspect, which might be good since aspects are true. And it might be easier to motivate a <strong>Create an Advantage Action</strong> later in the conflict.</p>",
+            fail: "<p>When you fail on a <strong>Attack Action</strong>, you fail to connect—the attack is parried, dodged, or maybe just absorbed by armor.</p><p>Do remember that when you fail, the opposition might succeed with style, they might get a <strong>boost</strong> from that!</p>",
         },
         defend: {
-            tie: "If you tie, proceed according to the tie result for the opposed action.",
-            succeed: "If you succeed, you don't take a hit or you deny the enemy's action.",
-            succeedwithstyle: "If you succeed with style, you don't take a hit, you deny the enemy's action, and you even get a boost as you gain the upper hand for a moment.",
-            failure: "If you fail against an attack, you take a hit, which you must absorb with stress or consequences. Regardless, the enemy succeeds as described for their action.",
+            tie: "<p>When you tie on a <strong>Defend Action</strong>, proceed according to the tie result for the opposed action. In the case of an attack this might mean that they get a <strong>boost!</strong></p>",
+            succeed: "<p>When you suceed on a <strong>Defend Action</strong>, you don't take a hit or you deny the enemy's action.</p>",
+            succeedwithstyle: "<p>When you succeed on a <strong>Defend Action</strong>, you don't take a hit, you deny the enemy's action, and you even get a boost as you gain the upper hand for a moment.</p><p>There are two suggested stunts in Fate Core that give you the option to upgrade the boost to an Aspect, which might be good since aspects are true. And it might be easier to motivate a <strong>Create an Advantage Action</strong> later in the conflict.</p>",
+            fail: "<p>When you fail on a <strong>Defend Action</strong>, you take a hit, which you must absorb with stress or consequences. Regardless, the enemy succeeds as described for their action. This might lead them to reduce the stress by one to get a <strong>boost</>strong><p>",
         },
         placeholder: {
-            tie: "Placeholder Tie.",
-            succeed: "Placeholder Success!",
-            succeedwithstyle: "Placeholder Succeed with style!",
-            failure: "Placeholder Failure - still sucks!",
+            tie: "<p>You tie when your <i>effort</i> is <i>equal</i> to the difficulty, or in the case of active opposition, the opposition's <i>effort</i>.</p>",
+            succeed: "<p>You succeed when your <i>effort</i> is 1 or 2 <i>more </i>than the difficulty, or in the case of active opposition, the opposition's <i>effort</i>.</p>",
+            succeedwithstyle: "<p>You succeed with style when your <i>effort</i> is 3 <i>or more </i>than the difficulty, or in the case of active opposition, the opposition's <i>effort</i>.</p>",
+            fail: "<p>You fail when your <i>effort</i> is <i>less than</i> the difficulty, or in the case of active opposition, the opposition's <i>effort</i>.</p>",
         },
     };
 
@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (diff > 2) return 'Succeed with style';
         if (diff > 0) return 'Succeed';
         if (diff === 0) return 'Tie';
-        return 'Failure';
+        return 'Fail';
     }
     function handleAction(action) {
         //console.log("Handle Action executed")
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const specificOutcome = actionOutcomes[currentAction][outcome.toLowerCase().replace(/ /g, '')];
         //console.log(specificOutcome)
         //Update the display
-        document.getElementById('specificOutcome').textContent = specificOutcome;
+        document.getElementById('specificOutcome').innerHTML = specificOutcome;
         //console.log("Now it is displayed")
     }
 
@@ -257,19 +257,6 @@ document.addEventListener('DOMContentLoaded', () => {
     skillSlider.addEventListener('input', updateValues);
     difficultySlider.addEventListener('input', updateValues);
 
-    //document.getElementById('overcomeBtn').addEventListener('click', rollDice);
-    //document.getElementById('createAdvantageBtn').addEventListener('click', rollDice);
-    //document.getElementById('attackBtn').addEventListener('click', rollDice);
-    //document.getElementById('defendBtn').addEventListener('click', rollDice);
-    //function handleAction(action) {
-    //    rollDice();
-    //    updateValues(action); // Pass the action type here
-    //}
-
-    //document.getElementById('overcomeBtn').addEventListener('click', () => handleAction('overcome'));
-    //document.getElementById('createAdvantageBtn').addEventListener('click', () => handleAction('createAdvantage'));
-    //document.getElementById('attackBtn').addEventListener('click', () => handleAction('attack'));
-    //document.getElementById('defendBtn').addEventListener('click', () => handleAction('defend'));
     document.getElementById('overcomeBtn').addEventListener('click', () => rollDice());
     document.getElementById('overcomeBtn').addEventListener('click', () => handleAction('overcome'));
     document.getElementById('createAdvantageBtn').addEventListener('click', () => rollDice());

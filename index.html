@@ -8,7 +8,9 @@
 </head>
 <body>
     <h1>Fate Dice Roller</h1>
-    
+    <div>
+        <p>This Fate Dice roller is based on the ruleset of Fate Condensed. Thus the Fate Ladder, the Actions, and the Outcomes are all from there. Here and there are some references to Fate Core.</p>
+    </div>
     <div>
         <p></p><label for="skill">Skill:</label>
         <input type="range" id="skill" min="-2" max="10" value="0" class="slider">
@@ -51,8 +53,8 @@
         <p>Dice Sum: <span id="diceSum">0</span></p>
         <p>Preliminary Result: <span id="preliminaryResult">0</span></p>
         <p>Secondary Result: <span id="secondaryResult">0</span></p>
-        <p>Outcome: <span id="outcome">N/A</span></p>
-        <p>Action Outcome: <span id="specificOutcome">N/A</span></p>
+        <p class="redundant" >Outcome: <span id="outcome">N/A</span></p>
+        <p class="redundant" >Action Outcome: <span id="specificOutcome">N/A</span></p>
     </div>
 
     <div class="button-container">
@@ -72,6 +74,15 @@
     <div class="button-container">
         <button id="resetBtn">Reset</button>
     </div>
+    <div>
+        <h2>The Four Outcomes:</h2>
+        <p>You succeed with style when your <i>effort</i> is 3 <i>or more </i>than the difficulty, or in the case of active opposition, the opposition's <i>effort</i>.</p><p><a href="https://fate-srd.com/fate-condensed/taking-action-rolling-dice#success-with-style">Fate Condensed SRD - Success with Style</a></p>
+        <p>You succeed when your <i>effort</i> is 1 or 2 <i>more </i>than the difficulty, or in the case of active opposition, the opposition's <i>effort</i>.</p><p><a href="https://fate-srd.com/fate-condensed/taking-action-rolling-dice#success">Fate Condensed SRD - Success</a></p>
+        <p>You tie when your <i>effort</i> is <i>equal</i> to the difficulty, or in the case of active opposition, the opposition's <i>effort</i>.</p><p><a href="https://fate-srd.com/fate-condensed/taking-action-rolling-dice#tie">Fate Condensed SRD - Tie</a></p>
+        <p>You fail when your <i>effort</i> is <i>less than</i> the difficulty, or in the case of active opposition, the opposition's <i>effort</i>.</p><p><a href="https://fate-srd.com/fate-condensed/taking-action-rolling-dice#failure">Fate Condensed SRD - Failure</a></p>
+        <p></p>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
+

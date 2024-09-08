@@ -25,6 +25,9 @@ p {
     margin: 10px 0;
     font-size: 16px;
 }
+.redundant{
+    display: none;
+}
 .slider{
     width: 100%;
 }
